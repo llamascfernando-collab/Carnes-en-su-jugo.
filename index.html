@@ -27,10 +27,7 @@ body{
     background:#32170d;
 }
 
-/* =========================
-   FONDO DIFUMINADO
-========================= */
-
+/* FONDO DIFUMINADO */
 body::before{
     content:"";
     position:fixed;
@@ -51,286 +48,182 @@ body::after{
     content:"";
     position:fixed;
     inset:0;
-
     background:rgba(30,10,3,.20);
-
     z-index:-1;
 }
 
-
-/* =========================
-   CONTENEDOR
-========================= */
-
+/* CONTENEDOR */
 .contenedor{
     width:100%;
     max-width:500px;
     margin:0 auto;
 }
 
-
-/* =========================
-   LOGO SUPERIOR
-========================= */
-
+/* LOGO */
 .logo{
     display:block;
-
     width:90%;
     max-width:390px;
-
     height:auto;
-
     margin:0 auto 16px;
-
     object-fit:contain;
 
-    filter:
-        drop-shadow(
-            0 4px 8px
-            rgba(0,0,0,.35)
-        );
+    filter:drop-shadow(
+        0 4px 8px rgba(0,0,0,.35)
+    );
 }
 
-
-/* =========================
-   TARJETA BLANCA
-========================= */
-
+/* TARJETA */
 .tarjeta{
     width:100%;
-
     background:#fff;
-
     border-radius:27px;
-
     border-top:6px solid #c9161d;
-
     padding:27px 22px 25px;
 
     box-shadow:
-        0 18px 50px
-        rgba(0,0,0,.40);
+        0 18px 50px rgba(0,0,0,.40);
 
     text-align:center;
 }
 
-
-/* =========================
-   TÍTULO
-========================= */
-
 h1{
     margin:0;
-
     color:#c4161d;
-
     font-size:28px;
-
     font-weight:900;
-
     line-height:1.05;
 }
 
 .subtitulo{
     margin-top:8px;
-
     color:#c4161d;
-
     font-size:14px;
-
     letter-spacing:5px;
 }
 
 .linea{
     width:88%;
-
     height:2px;
-
     background:#c4161d;
-
     margin:20px auto 24px;
 }
 
-
-/* =========================
-   PREGUNTAS
-========================= */
-
+/* PREGUNTAS */
 .pregunta{
     margin:20px 0 10px;
-
     color:#111;
-
     font-size:20px;
-
     font-weight:900;
 }
 
-
-/* =========================
-   ESTRELLAS
-========================= */
-
+/* ESTRELLAS */
 .estrellas{
     display:flex;
-
     justify-content:center;
-
     gap:7px;
-
     margin:8px 0 22px;
 }
 
 .estrella{
     border:0;
-
     background:transparent;
-
     padding:0;
-
     font-size:47px;
-
     line-height:1;
-
     color:#d9d9d9;
-
     cursor:pointer;
-
     transition:.15s;
 }
 
 .estrella.activa{
     color:#ffb82e;
-
     transform:scale(1.06);
 
     text-shadow:
-        0 2px 2px
-        rgba(150,90,0,.25);
+        0 2px 2px rgba(150,90,0,.25);
 }
 
-
-/* =========================
-   LAS 4 OPCIONES
-========================= */
-
+/* OPCIONES */
 .opciones{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:10px;
-
     margin-top:12px;
 }
 
 .opcion{
     width:100%;
-
     min-height:67px;
-
     padding:9px 12px;
 
-    border:
-        1.5px solid #d7d7d7;
-
+    border:1.5px solid #d7d7d7;
     border-radius:13px;
 
     background:#fff;
 
     display:flex;
-
     align-items:center;
-
     gap:12px;
 
     color:#111;
-
     font-size:15px;
-
     font-weight:500;
-
     text-align:left;
 
     cursor:pointer;
-
     transition:.15s;
 }
 
-
-/* CÍRCULO ROJO */
-
+/* CÍRCULOS ROJOS */
 .icono{
     width:44px;
     height:44px;
-
     min-width:44px;
 
     border-radius:50%;
-
     background:#d10e17;
-
-    color:white;
+    color:#fff;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     font-size:21px;
-
     font-weight:bold;
 }
 
-
-/* CUANDO SE SELECCIONA */
-
+/* OPCIÓN SELECCIONADA */
 .opcion.activa{
     border-color:#d10e17;
-
     background:#fff1f1;
-
     color:#b10810;
 
     box-shadow:
-        0 0 0 2px
-        rgba(209,14,23,.08);
+        0 0 0 2px rgba(209,14,23,.08);
 }
 
 .opcion.activa .icono{
     background:#b70810;
+    transform:scale(1.05);
 }
 
-
-/* =========================
-   COMENTARIO
-========================= */
-
+/* COMENTARIO */
 textarea{
     width:100%;
-
     min-height:120px;
-
     padding:15px;
 
-    border:
-        1.5px solid #ccc;
-
+    border:1.5px solid #ccc;
     border-radius:15px;
 
     background:white;
 
     font-family:Arial,Helvetica,sans-serif;
-
     font-size:15px;
-
     line-height:1.4;
 
     outline:none;
-
     resize:vertical;
 }
 
@@ -338,28 +231,20 @@ textarea:focus{
     border-color:#c9161d;
 
     box-shadow:
-        0 0 0 3px
-        rgba(201,22,29,.08);
+        0 0 0 3px rgba(201,22,29,.08);
 }
 
 textarea::placeholder{
     color:#999;
 }
 
-
-/* =========================
-   BOTÓN ENVIAR
-========================= */
-
+/* BOTÓN */
 .enviar{
     width:100%;
-
     min-height:59px;
-
     margin-top:18px;
 
     border:0;
-
     border-radius:15px;
 
     background:
@@ -372,73 +257,53 @@ textarea::placeholder{
     color:white;
 
     font-size:18px;
-
     font-weight:900;
 
     cursor:pointer;
 
     box-shadow:
-        0 6px 14px
-        rgba(190,0,10,.25);
+        0 6px 14px rgba(190,0,10,.25);
 }
 
 .enviar:active{
     transform:scale(.99);
 }
 
-
-/* =========================
-   GRACIAS
-========================= */
-
+/* MENSAJE FINAL */
 .gracias{
     display:none;
-
     padding:40px 10px;
 }
 
 .check{
     width:75px;
     height:75px;
-
     margin:auto;
 
     border-radius:50%;
-
     background:#cc1018;
-
     color:white;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     font-size:42px;
-
     font-weight:bold;
 }
 
 .gracias h2{
     color:#bd1018;
-
     font-size:27px;
-
     margin:18px 0 8px;
 }
 
 .gracias p{
     color:#555;
-
     line-height:1.5;
 }
 
-
-/* =========================
-   CELULAR
-========================= */
-
+/* CELULAR */
 @media(max-width:600px){
 
     body{
@@ -455,28 +320,20 @@ textarea::placeholder{
     .logo{
         width:90%;
         max-width:340px;
-
         margin-bottom:12px;
     }
 
     .tarjeta{
         padding:23px 14px 20px;
-
         border-radius:22px;
     }
 
     h1{
-        font-size:
-            clamp(
-                22px,
-                7vw,
-                28px
-            );
+        font-size:clamp(22px,7vw,28px);
     }
 
     .subtitulo{
         font-size:11px;
-
         letter-spacing:4px;
     }
 
@@ -485,13 +342,7 @@ textarea::placeholder{
     }
 
     .pregunta{
-        font-size:
-            clamp(
-                17px,
-                5vw,
-                20px
-            );
-
+        font-size:clamp(17px,5vw,20px);
         margin-top:18px;
     }
 
@@ -500,12 +351,7 @@ textarea::placeholder{
     }
 
     .estrella{
-        font-size:
-            clamp(
-                37px,
-                11vw,
-                46px
-            );
+        font-size:clamp(37px,11vw,46px);
     }
 
     .opciones{
@@ -514,20 +360,15 @@ textarea::placeholder{
 
     .opcion{
         min-height:61px;
-
         padding:7px 8px;
-
         gap:8px;
-
         font-size:13px;
     }
 
     .icono{
         width:38px;
         height:38px;
-
         min-width:38px;
-
         font-size:18px;
     }
 
@@ -537,13 +378,9 @@ textarea::placeholder{
 
     .enviar{
         min-height:55px;
-
         font-size:16px;
     }
 }
-
-
-/* PANTALLAS MUY ANGOSTAS */
 
 @media(max-width:350px){
 
@@ -554,273 +391,186 @@ textarea::placeholder{
     .icono{
         width:34px;
         height:34px;
-
         min-width:34px;
     }
-
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="contenedor">
 
+    <!-- LOGO -->
+    <img
+        class="logo"
+        src="Imagen de ChatGPT 29 sept 2026, 10_27_08 p.m..png"
+        alt="Karnes en su Jugo"
+    >
 
-<!-- =========================
-     LOGO
-========================= -->
+    <main class="tarjeta">
 
-<img
-    class="logo"
-    src="Imagen de ChatGPT 29 sept 2026, 10_27_08 p.m..png"
-    alt="Karnes en su Jugo"
->
+        <!-- FORMULARIO -->
+        <section id="formulario">
 
+            <h1>
+                TU OPINIÓN NOS AYUDA
+            </h1>
 
-<!-- =========================
-     TARJETA
-========================= -->
+            <div class="subtitulo">
+                A SEGUIR MEJORANDO
+            </div>
 
-<main class="tarjeta">
+            <div class="linea"></div>
 
+            <!-- ESTRELLAS -->
+            <div class="pregunta">
+                ¿Cómo fue tu experiencia?
+            </div>
 
-<section id="formulario">
+            <div class="estrellas">
 
+                <button class="estrella" type="button" data-valor="1">
+                    ★
+                </button>
 
-<h1>
-TU OPINIÓN NOS AYUDA
-</h1>
+                <button class="estrella" type="button" data-valor="2">
+                    ★
+                </button>
 
+                <button class="estrella" type="button" data-valor="3">
+                    ★
+                </button>
 
-<div class="subtitulo">
-A SEGUIR MEJORANDO
-</div>
+                <button class="estrella" type="button" data-valor="4">
+                    ★
+                </button>
 
+                <button class="estrella" type="button" data-valor="5">
+                    ★
+                </button>
 
-<div class="linea"></div>
+            </div>
 
+            <!-- 4 OPCIONES -->
+            <div class="pregunta">
+                ¿Qué quieres destacar?
+            </div>
 
+            <div class="opciones">
 
-<!-- =========================
-     ESTRELLAS
-========================= -->
+                <!-- SABOR -->
+                <button
+                    class="opcion"
+                    type="button"
+                    data-nombre="Sabor">
 
-<div class="pregunta">
-¿Cómo fue tu experiencia?
-</div>
+                    <span class="icono">
+                        🥩
+                    </span>
 
+                    <span>Sabor</span>
 
-<div class="estrellas">
+                </button>
 
-<button
-    class="estrella"
-    type="button"
-    data-valor="1">
-★
-</button>
+                <!-- SERVICIO -->
+                <button
+                    class="opcion"
+                    type="button"
+                    data-nombre="Servicio">
 
-<button
-    class="estrella"
-    type="button"
-    data-valor="2">
-★
-</button>
+                    <span class="icono">
+                        👤
+                    </span>
 
-<button
-    class="estrella"
-    type="button"
-    data-valor="3">
-★
-</button>
+                    <span>Servicio</span>
 
-<button
-    class="estrella"
-    type="button"
-    data-valor="4">
-★
-</button>
+                </button>
 
-<button
-    class="estrella"
-    type="button"
-    data-valor="5">
-★
-</button>
+                <!-- TIEMPO -->
+                <button
+                    class="opcion"
+                    type="button"
+                    data-nombre="Tiempo de espera">
 
-</div>
+                    <span class="icono">
+                        ◷
+                    </span>
 
+                    <span>
+                        Tiempo<br>
+                        de espera
+                    </span>
 
+                </button>
 
-<!-- =========================
-     4 OPCIONES
-========================= -->
+                <!-- LIMPIEZA -->
+                <button
+                    class="opcion"
+                    type="button"
+                    data-nombre="Limpieza">
 
-<div class="pregunta">
-¿Qué quieres destacar?
-</div>
+                    <span class="icono">
+                        ✦
+                    </span>
 
+                    <span>Limpieza</span>
 
-<div class="opciones">
+                </button>
 
+            </div>
 
-<!-- SABOR -->
+            <!-- PARTE ABIERTA -->
+            <div class="pregunta">
+                Cuéntanos un poco más
+            </div>
 
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Sabor">
+            <textarea
+                id="comentario"
+                placeholder="Escribe aquí tu comentario, sugerencia o experiencia..."></textarea>
 
-<span class="icono">
-🥩
-</span>
+            <!-- ENVIAR -->
+            <button
+                class="enviar"
+                id="enviar"
+                type="button">
 
-<span>
-Sabor
-</span>
+                ENVIAR RESEÑA　➤
 
-</button>
+            </button>
 
+        </section>
 
+        <!-- GRACIAS -->
+        <section class="gracias" id="gracias">
 
-<!-- SERVICIO -->
+            <div class="check">
+                ✓
+            </div>
 
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Servicio">
+            <h2>
+                ¡Gracias por tu opinión!
+            </h2>
 
-<span class="icono">
-●
-</span>
+            <p>
+                Tu comentario nos ayuda
+                a seguir mejorando.
+            </p>
 
-<span>
-Servicio
-</span>
+            <button
+                class="enviar"
+                type="button"
+                onclick="location.reload()">
 
-</button>
+                NUEVA RESEÑA
 
+            </button>
 
+        </section>
 
-<!-- TIEMPO -->
-
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Tiempo de espera">
-
-<span class="icono">
-◷
-</span>
-
-<span>
-Tiempo<br>
-de espera
-</span>
-
-</button>
-
-
-
-<!-- LIMPIEZA -->
-
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Limpieza">
-
-<span class="icono">
-✦
-</span>
-
-<span>
-Limpieza
-</span>
-
-</button>
-
+    </main>
 
 </div>
-
-
-
-<!-- =========================
-     COMENTARIO
-========================= -->
-
-<div class="pregunta">
-Cuéntanos un poco más
-</div>
-
-
-<textarea
-    id="comentario"
-    placeholder="Escribe aquí tu comentario..."></textarea>
-
-
-
-<!-- =========================
-     ENVIAR
-========================= -->
-
-<button
-    class="enviar"
-    id="enviar"
-    type="button">
-
-ENVIAR RESEÑA　➤
-
-</button>
-
-
-</section>
-
-
-
-<!-- =========================
-     GRACIAS
-========================= -->
-
-<section
-    class="gracias"
-    id="gracias">
-
-
-<div class="check">
-✓
-</div>
-
-
-<h2>
-¡Gracias por tu opinión!
-</h2>
-
-
-<p>
-Tu comentario nos ayuda
-a seguir mejorando.
-</p>
-
-
-<button
-    class="enviar"
-    type="button"
-    onclick="location.reload()">
-
-NUEVA RESEÑA
-
-</button>
-
-
-</section>
-
-
-</main>
-
-</div>
-
 
 <script>
 
@@ -831,186 +581,111 @@ NUEVA RESEÑA
 let calificacion = 0;
 
 const estrellas =
-    document.querySelectorAll(
-        ".estrella"
-    );
+    document.querySelectorAll(".estrella");
 
+estrellas.forEach(estrella => {
 
-estrellas.forEach(
+    estrella.addEventListener("click", function(){
 
-    estrella => {
+        calificacion =
+            Number(this.dataset.valor);
 
-        estrella.addEventListener(
+        estrellas.forEach(item => {
 
-            "click",
-
-            function(){
-
-                calificacion =
-                    Number(
-                        this.dataset.valor
-                    );
-
-
-                estrellas.forEach(
-
-                    item => {
-
-                        if(
-                            Number(
-                                item.dataset.valor
-                            )
-                            <=
-                            calificacion
-                        ){
-
-                            item.classList.add(
-                                "activa"
-                            );
-
-                        }else{
-
-                            item.classList.remove(
-                                "activa"
-                            );
-
-                        }
-
-                    }
-
-                );
-
+            if(
+                Number(item.dataset.valor)
+                <= calificacion
+            ){
+                item.classList.add("activa");
+            }else{
+                item.classList.remove("activa");
             }
 
-        );
+        });
 
-    }
+    });
 
-);
+});
 
 
 /* =========================
-   OPCIONES
+   4 OPCIONES
+   PUEDEN ELEGIR VARIAS
 ========================= */
 
 const opciones =
-    document.querySelectorAll(
-        ".opcion"
-    );
+    document.querySelectorAll(".opcion");
 
+opciones.forEach(opcion => {
 
-opciones.forEach(
+    opcion.addEventListener("click", function(){
 
-    opcion => {
+        this.classList.toggle("activa");
 
-        opcion.addEventListener(
+    });
 
-            "click",
-
-            function(){
-
-                this.classList.toggle(
-                    "activa"
-                );
-
-            }
-
-        );
-
-    }
-
-);
+});
 
 
 /* =========================
-   BOTÓN ENVIAR
-   SOLO PROTOTIPO
+   ENVIAR
+   PROTOTIPO
 ========================= */
 
-document.getElementById(
-    "enviar"
-).addEventListener(
+document
+.getElementById("enviar")
+.addEventListener("click", function(){
 
-    "click",
+    if(calificacion === 0){
 
-    function(){
-
-        if(
-            calificacion === 0
-        ){
-
-            alert(
-                "Selecciona una calificación."
-            );
-
-            return;
-
-        }
-
-
-        const seleccionados = [];
-
-
-        document.querySelectorAll(
-            ".opcion.activa"
-        ).forEach(
-
-            opcion => {
-
-                seleccionados.push(
-                    opcion.dataset.nombre
-                );
-
-            }
-
+        alert(
+            "Selecciona una calificación."
         );
 
-
-        const comentario =
-            document.getElementById(
-                "comentario"
-            ).value;
-
-
-        /* SOLO PARA PROBAR */
-
-        console.log({
-
-            calificacion:
-                calificacion,
-
-            destacar:
-                seleccionados,
-
-            comentario:
-                comentario
-
-        });
-
-
-        document.getElementById(
-            "formulario"
-        ).style.display =
-            "none";
-
-
-        document.getElementById(
-            "gracias"
-        ).style.display =
-            "block";
-
-
-        window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
-        });
-
+        return;
     }
 
-);
+    const seleccionados = [];
+
+    document
+    .querySelectorAll(".opcion.activa")
+    .forEach(opcion => {
+
+        seleccionados.push(
+            opcion.dataset.nombre
+        );
+
+    });
+
+    const comentario =
+        document
+        .getElementById("comentario")
+        .value;
+
+    console.log({
+
+        calificacion: calificacion,
+
+        destacar: seleccionados,
+
+        comentario: comentario
+
+    });
+
+    document
+        .getElementById("formulario")
+        .style.display = "none";
+
+    document
+        .getElementById("gracias")
+        .style.display = "block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
 
 </script>
 
