@@ -1,1 +1,1210 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Karnes en su Jugo | Encuesta</title>
+
+
+<style>
+
+/* ================================
+   CONFIGURACIÓN GENERAL
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+
+    /* ============================
+       FOTO ORIGINAL DE FONDO
+    ============================ */
+
+    background-image:
+    linear-gradient(
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.25)
+    ),
+    url("carne en su jugo.jpeg");
+
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 35px 15px;
+
+}
+
+
+/* ================================
+   TARJETA BLANCA
+================================ */
+
+.encuesta {
+
+    width: min(100%, 520px);
+
+    background:
+    rgba(255,255,255,0.97);
+
+    border-radius: 26px;
+
+    padding:
+    30px 25px;
+
+    box-shadow:
+    0 20px 60px
+    rgba(0,0,0,0.45);
+
+    text-align: center;
+
+}
+
+
+/* ================================
+   ENCABEZADO
+================================ */
+
+.titulo {
+
+    color: #97131a;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    margin: 0;
+
+}
+
+
+.subtitulo {
+
+    color: #97131a;
+
+    letter-spacing: 5px;
+
+    font-size: 16px;
+
+    margin-top: 5px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.linea {
+
+    width: 85%;
+
+    height: 2px;
+
+    background:
+    #c3151e;
+
+    margin:
+    15px auto 22px;
+
+}
+
+
+/* ================================
+   PREGUNTAS
+================================ */
+
+.pregunta {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #171717;
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* ================================
+   ESTRELLAS
+================================ */
+
+.estrellas {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin:
+    8px 0;
+
+}
+
+
+.estrella {
+
+    border: none;
+
+    background: none;
+
+    font-size: 46px;
+
+    color: #d6d6d6;
+
+    cursor: pointer;
+
+    padding: 0;
+
+    transition:
+    transform .15s,
+    color .15s;
+
+}
+
+
+.estrella:hover {
+
+    transform:
+    scale(1.12);
+
+}
+
+
+.estrella.activa {
+
+    color: #ffb900;
+
+    transform:
+    scale(1.05);
+
+}
+
+
+.calificacion {
+
+    font-size: 13px;
+
+    color: #777;
+
+    min-height: 18px;
+
+}
+
+
+/* ================================
+   OPCIONES
+================================ */
+
+.opciones {
+
+    display: grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 12px;
+
+}
+
+
+.opcion {
+
+    background:
+    #ffffff;
+
+    border:
+    1.5px solid #dddddd;
+
+    border-radius:
+    13px;
+
+    min-height:
+    63px;
+
+    padding:
+    10px;
+
+    display:
+    flex;
+
+    align-items:
+    center;
+
+    gap:
+    10px;
+
+    font-size:
+    15px;
+
+    font-weight:
+    700;
+
+    color:
+    #222;
+
+    cursor:
+    pointer;
+
+    text-align:
+    left;
+
+    transition:
+    .15s;
+
+}
+
+
+.opcion:hover {
+
+    border-color:
+    #c5000b;
+
+}
+
+
+.opcion.activa {
+
+    background:
+    #fff0f0;
+
+    border-color:
+    #c5000b;
+
+    color:
+    #a00009;
+
+}
+
+
+/* ================================
+   ICONOS ROJOS
+================================ */
+
+.icono {
+
+    width:
+    37px;
+
+    height:
+    37px;
+
+    min-width:
+    37px;
+
+    border-radius:
+    50%;
+
+    background:
+    #c6000b;
+
+    color:
+    white;
+
+    display:
+    flex;
+
+    align-items:
+    center;
+
+    justify-content:
+    center;
+
+    font-size:
+    18px;
+
+}
+
+
+/* ================================
+   COMENTARIO
+================================ */
+
+textarea {
+
+    width:
+    100%;
+
+    min-height:
+    115px;
+
+    padding:
+    14px;
+
+    border:
+    1.5px solid #cccccc;
+
+    border-radius:
+    13px;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    font-size:
+    15px;
+
+    resize:
+    vertical;
+
+    outline:
+    none;
+
+}
+
+
+textarea:focus {
+
+    border-color:
+    #c5000b;
+
+}
+
+
+/* ================================
+   BOTÓN ENVIAR
+================================ */
+
+.enviar {
+
+    width:
+    100%;
+
+    border:
+    none;
+
+    border-radius:
+    14px;
+
+    padding:
+    16px;
+
+    margin-top:
+    18px;
+
+    background:
+    linear-gradient(
+        #df0712,
+        #a90009
+    );
+
+    color:
+    white;
+
+    font-size:
+    18px;
+
+    font-weight:
+    900;
+
+    cursor:
+    pointer;
+
+    box-shadow:
+    0 5px 12px
+    rgba(170,0,10,.30);
+
+    transition:
+    .15s;
+
+}
+
+
+.enviar:hover {
+
+    transform:
+    translateY(-2px);
+
+    box-shadow:
+    0 8px 16px
+    rgba(170,0,10,.35);
+
+}
+
+
+.enviar:active {
+
+    transform:
+    translateY(1px);
+
+}
+
+
+/* ================================
+   MENSAJE FINAL
+================================ */
+
+.gracias {
+
+    display:
+    none;
+
+    padding:
+    35px 10px;
+
+}
+
+
+.check {
+
+    width:
+    75px;
+
+    height:
+    75px;
+
+    margin:
+    auto;
+
+    border-radius:
+    50%;
+
+    background:
+    #c5000b;
+
+    color:
+    white;
+
+    display:
+    flex;
+
+    align-items:
+    center;
+
+    justify-content:
+    center;
+
+    font-size:
+    42px;
+
+}
+
+
+.gracias h2 {
+
+    color:
+    #a80009;
+
+    font-size:
+    28px;
+
+    margin-bottom:
+    8px;
+
+}
+
+
+.gracias p {
+
+    color:
+    #555;
+
+}
+
+
+/* ================================
+   CELULAR
+================================ */
+
+@media
+(max-width: 500px) {
+
+    body {
+
+        padding:
+        20px 10px;
+
+        background-attachment:
+        scroll;
+
+    }
+
+
+    .encuesta {
+
+        padding:
+        25px 17px;
+
+        border-radius:
+        22px;
+
+    }
+
+
+    .titulo {
+
+        font-size:
+        23px;
+
+    }
+
+
+    .subtitulo {
+
+        font-size:
+        13px;
+
+        letter-spacing:
+        3px;
+
+    }
+
+
+    .estrella {
+
+        font-size:
+        39px;
+
+    }
+
+
+    .opcion {
+
+        font-size:
+        13px;
+
+        padding:
+        8px;
+
+    }
+
+
+    .icono {
+
+        width:
+        33px;
+
+        height:
+        33px;
+
+        min-width:
+        33px;
+
+        font-size:
+        16px;
+
+    }
+
+}
+
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media
+(max-width: 350px) {
+
+    .opciones {
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ===================================
+     ENCUESTA
+=================================== -->
+
+<main class="encuesta">
+
+
+<section id="formulario">
+
+
+<h1 class="titulo">
+
+TU OPINIÓN NOS AYUDA
+
+</h1>
+
+
+<div class="subtitulo">
+
+A SEGUIR MEJORANDO
+
+</div>
+
+
+<div class="linea"></div>
+
+
+
+<!-- CALIFICACIÓN -->
+
+
+<div class="pregunta">
+
+¿Cómo fue tu experiencia?
+
+</div>
+
+
+<div class="estrellas">
+
+
+<button
+type="button"
+class="estrella"
+data-valor="1">
+
+★
+
+</button>
+
+
+<button
+type="button"
+class="estrella"
+data-valor="2">
+
+★
+
+</button>
+
+
+<button
+type="button"
+class="estrella"
+data-valor="3">
+
+★
+
+</button>
+
+
+<button
+type="button"
+class="estrella"
+data-valor="4">
+
+★
+
+</button>
+
+
+<button
+type="button"
+class="estrella"
+data-valor="5">
+
+★
+
+</button>
+
+
+</div>
+
+
+<div
+class="calificacion"
+id="textoCalificacion">
+
+Selecciona una calificación
+
+</div>
+
+
+
+<!-- OPCIONES -->
+
+
+<div class="pregunta">
+
+¿Qué quieres destacar?
+
+</div>
+
+
+<div class="opciones">
+
+
+<button
+type="button"
+class="opcion"
+data-nombre="Sabor">
+
+<span class="icono">
+🥩
+</span>
+
+Sabor
+
+</button>
+
+
+
+<button
+type="button"
+class="opcion"
+data-nombre="Servicio">
+
+<span class="icono">
+●
+</span>
+
+Servicio
+
+</button>
+
+
+
+<button
+type="button"
+class="opcion"
+data-nombre="Tiempo de espera">
+
+<span class="icono">
+◷
+</span>
+
+Tiempo de espera
+
+</button>
+
+
+
+<button
+type="button"
+class="opcion"
+data-nombre="Limpieza">
+
+<span class="icono">
+✦
+</span>
+
+Limpieza
+
+</button>
+
+
+
+<button
+type="button"
+class="opcion"
+data-nombre="Porciones">
+
+<span class="icono">
+🍴
+</span>
+
+Porciones
+
+</button>
+
+
+
+<button
+type="button"
+class="opcion"
+data-nombre="Precio">
+
+<span class="icono">
+$
+</span>
+
+Precio
+
+</button>
+
+
+</div>
+
+
+
+<!-- COMENTARIO -->
+
+
+<div class="pregunta">
+
+Cuéntanos un poco más
+
+</div>
+
+
+<textarea
+id="comentario"
+placeholder="Escribe aquí tu comentario...">
+</textarea>
+
+
+
+<!-- ENVIAR -->
+
+
+<button
+type="button"
+class="enviar"
+id="enviar">
+
+ENVIAR RESEÑA ✈
+
+</button>
+
+
+</section>
+
+
+
+<!-- ===================================
+     PANTALLA DE GRACIAS
+=================================== -->
+
+
+<section
+class="gracias"
+id="gracias">
+
+
+<div class="check">
+
+✓
+
+</div>
+
+
+<h2>
+
+¡Gracias por tu opinión!
+
+</h2>
+
+
+<p>
+
+Tu comentario nos ayuda
+a mejorar cada visita.
+
+</p>
+
+
+<button
+type="button"
+class="enviar"
+onclick="location.reload()">
+
+NUEVA RESEÑA
+
+</button>
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* ================================
+   VARIABLES
+================================ */
+
+let calificacion = 0;
+
+
+const estrellas =
+document.querySelectorAll(
+    ".estrella"
+);
+
+
+const nombresCalificacion = [
+
+    "",
+
+    "Muy mala",
+
+    "Mala",
+
+    "Regular",
+
+    "Muy buena",
+
+    "Excelente"
+
+];
+
+
+
+/* ================================
+   ESTRELLAS
+================================ */
+
+
+estrellas.forEach(
+
+function(estrella) {
+
+
+    estrella.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        calificacion =
+        Number(
+            this.dataset.valor
+        );
+
+
+        estrellas.forEach(
+
+        function(item) {
+
+
+            const valor =
+            Number(
+                item.dataset.valor
+            );
+
+
+            if(
+                valor <=
+                calificacion
+            ) {
+
+
+                item.classList.add(
+                    "activa"
+                );
+
+
+            }
+
+            else {
+
+
+                item.classList.remove(
+                    "activa"
+                );
+
+
+            }
+
+
+        });
+
+
+        document.getElementById(
+            "textoCalificacion"
+        ).textContent =
+
+        calificacion +
+
+        " / 5 · " +
+
+        nombresCalificacion[
+            calificacion
+        ];
+
+
+    });
+
+
+});
+
+
+
+/* ================================
+   OPCIONES
+================================ */
+
+
+const opciones =
+document.querySelectorAll(
+    ".opcion"
+);
+
+
+opciones.forEach(
+
+function(opcion) {
+
+
+    opcion.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        this.classList.toggle(
+            "activa"
+        );
+
+
+    });
+
+
+});
+
+
+
+/* ================================
+   BOTÓN ENVIAR
+================================ */
+
+
+document.getElementById(
+    "enviar"
+).addEventListener(
+
+"click",
+
+function() {
+
+
+    /* Comprobar estrellas */
+
+
+    if(
+        calificacion === 0
+    ) {
+
+
+        alert(
+            "Selecciona de 1 a 5 estrellas."
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* Motivos seleccionados */
+
+
+    const motivos = [];
+
+
+    document.querySelectorAll(
+        ".opcion.activa"
+    ).forEach(
+
+    function(opcion) {
+
+
+        motivos.push(
+            opcion.dataset.nombre
+        );
+
+
+    });
+
+
+
+    /* Comentario */
+
+
+    const comentario =
+    document.getElementById(
+        "comentario"
+    ).value;
+
+
+
+    /* Información de la encuesta */
+
+
+    const datos = {
+
+        calificacion:
+        calificacion,
+
+        motivos:
+        motivos,
+
+        comentario:
+        comentario
+
+    };
+
+
+    console.log(
+        "Encuesta:",
+        datos
+    );
+
+
+
+    /* Ocultar encuesta */
+
+
+    document.getElementById(
+        "formulario"
+    ).style.display =
+    "none";
+
+
+
+    /* Mostrar agradecimiento */
+
+
+    document.getElementById(
+        "gracias"
+    ).style.display =
+    "block";
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
