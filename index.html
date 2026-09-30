@@ -2,956 +2,833 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Karnes en su Jugo | Encuesta</title>
 
 <style>
-
-/* =========================================
-   GENERAL
-========================================= */
-
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-html,
-body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
+html,body{
+    margin:0;
+    width:100%;
+    min-height:100%;
 }
 
-body {
-
-    min-height: 100vh;
-    min-height: 100dvh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background: #2b150c;
-
-    padding:
-        20px 10px 35px;
-
-    position: relative;
-
-    overflow-x: hidden;
+body{
+    min-height:100vh;
+    min-height:100dvh;
+    font-family:Arial,Helvetica,sans-serif;
+    position:relative;
+    overflow-x:hidden;
+    padding:18px 10px 35px;
+    background:#32170d;
 }
 
+/* =========================
+   FONDO DIFUMINADO
+========================= */
 
-/* =========================================
-   FOTO DE FONDO
-========================================= */
+body::before{
+    content:"";
+    position:fixed;
+    inset:-30px;
 
-body::before {
+    background-image:url("carne en su jugo.jpeg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 
-    content: "";
+    filter:blur(7px);
+    transform:scale(1.08);
 
-    position: fixed;
+    z-index:-2;
+}
 
-    inset: -35px;
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
 
-    background-image:
-        url("carne en su jugo.jpeg");
+    background:rgba(30,10,3,.20);
 
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    filter: blur(7px);
-
-    transform: scale(1.08);
-
-    z-index: -2;
+    z-index:-1;
 }
 
 
-/* OSCURECER UN POCO EL FONDO */
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(30, 12, 5, 0.25);
-
-    z-index: -1;
-}
-
-
-/* =========================================
+/* =========================
    CONTENEDOR
-========================================= */
+========================= */
 
-.contenedor {
-
-    width: 100%;
-
-    max-width: 500px;
-
-    margin: 0 auto;
+.contenedor{
+    width:100%;
+    max-width:500px;
+    margin:0 auto;
 }
 
 
-/* =========================================
-   LOGO
-========================================= */
+/* =========================
+   LOGO SUPERIOR
+========================= */
 
-.logo-contenedor {
+.logo{
+    display:block;
 
-    width: 100%;
+    width:90%;
+    max-width:390px;
 
-    display: flex;
+    height:auto;
 
-    justify-content: center;
+    margin:0 auto 16px;
 
-    align-items: center;
-
-    padding:
-        5px 0 15px;
-}
-
-
-.logo {
-
-    display: block;
-
-    width: 88%;
-
-    max-width: 390px;
-
-    height: auto;
-
-    object-fit: contain;
+    object-fit:contain;
 
     filter:
         drop-shadow(
-            0 5px 10px
+            0 4px 8px
             rgba(0,0,0,.35)
         );
 }
 
 
-/* =========================================
+/* =========================
    TARJETA BLANCA
-========================================= */
+========================= */
 
-.encuesta {
+.tarjeta{
+    width:100%;
 
-    width: 100%;
+    background:#fff;
 
-    background:
-        rgba(255,255,255,.98);
+    border-radius:27px;
 
-    border-radius: 26px;
+    border-top:6px solid #c9161d;
 
-    border-top:
-        6px solid #c81018;
-
-    padding:
-        27px 22px 25px;
-
-    text-align: center;
+    padding:27px 22px 25px;
 
     box-shadow:
-        0 20px 55px
-        rgba(0,0,0,.42);
+        0 18px 50px
+        rgba(0,0,0,.40);
+
+    text-align:center;
 }
 
 
-/* =========================================
-   ENCABEZADO
-========================================= */
+/* =========================
+   TÍTULO
+========================= */
 
-.titulo {
+h1{
+    margin:0;
 
-    margin: 0;
+    color:#c4161d;
 
-    color: #bd1018;
+    font-size:28px;
 
-    font-size: 28px;
+    font-weight:900;
 
-    font-weight: 900;
+    line-height:1.05;
+}
 
-    line-height: 1.05;
+.subtitulo{
+    margin-top:8px;
 
-    text-transform: uppercase;
+    color:#c4161d;
+
+    font-size:14px;
+
+    letter-spacing:5px;
+}
+
+.linea{
+    width:88%;
+
+    height:2px;
+
+    background:#c4161d;
+
+    margin:20px auto 24px;
 }
 
 
-.subtitulo {
-
-    margin-top: 8px;
-
-    color: #bd1018;
-
-    font-size: 13px;
-
-    font-weight: 500;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-}
-
-
-.linea {
-
-    width: 88%;
-
-    height: 2px;
-
-    margin:
-        20px auto 24px;
-
-    background:
-        #c71920;
-}
-
-
-/* =========================================
+/* =========================
    PREGUNTAS
-========================================= */
+========================= */
 
-.pregunta {
+.pregunta{
+    margin:20px 0 10px;
 
-    margin:
-        23px 0 11px;
+    color:#111;
 
-    color: #161824;
+    font-size:20px;
 
-    font-size: 19px;
-
-    font-weight: 900;
-
-    line-height: 1.3;
+    font-weight:900;
 }
 
 
-/* =========================================
+/* =========================
    ESTRELLAS
-========================================= */
+========================= */
 
-.estrellas {
+.estrellas{
+    display:flex;
 
-    display: flex;
+    justify-content:center;
 
-    justify-content: center;
+    gap:7px;
 
-    align-items: center;
-
-    gap: 6px;
-
-    margin:
-        8px 0 6px;
+    margin:8px 0 22px;
 }
 
+.estrella{
+    border:0;
 
-.estrella {
+    background:transparent;
 
-    border: none;
+    padding:0;
 
-    background: transparent;
+    font-size:47px;
 
-    padding: 0;
+    line-height:1;
 
-    font-size: 46px;
+    color:#d9d9d9;
 
-    line-height: 1;
+    cursor:pointer;
 
-    color: #d6d6d6;
+    transition:.15s;
+}
 
-    cursor: pointer;
+.estrella.activa{
+    color:#ffb82e;
 
-    transition:
-        transform .15s,
-        color .15s;
+    transform:scale(1.06);
 
     text-shadow:
-        0 2px 3px
-        rgba(0,0,0,.12);
+        0 2px 2px
+        rgba(150,90,0,.25);
 }
 
 
-.estrella:hover {
+/* =========================
+   LAS 4 OPCIONES
+========================= */
 
-    transform:
-        scale(1.10);
+.opciones{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+    margin-top:12px;
 }
 
+.opcion{
+    width:100%;
 
-.estrella.activa {
+    min-height:67px;
 
-    color:
-        #ffb71b;
-
-    transform:
-        scale(1.05);
-}
-
-
-.texto-calificacion {
-
-    min-height: 18px;
-
-    margin-top: 7px;
-
-    color: #777;
-
-    font-size: 13px;
-
-    font-weight: 600;
-}
-
-
-/* =========================================
-   CUADROS DE RESPUESTA
-========================================= */
-
-textarea {
-
-    display: block;
-
-    width: 100%;
-
-    min-height: 100px;
-
-    padding:
-        14px 15px;
+    padding:9px 12px;
 
     border:
-        1.5px solid #cccccc;
+        1.5px solid #d7d7d7;
 
-    border-radius:
-        14px;
+    border-radius:13px;
 
-    background:
-        #ffffff;
+    background:#fff;
 
-    color:
-        #222;
+    display:flex;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    align-items:center;
 
-    font-size: 15px;
+    gap:12px;
 
-    line-height: 1.4;
+    color:#111;
 
-    outline: none;
+    font-size:15px;
 
-    resize: vertical;
+    font-weight:500;
 
-    transition:
-        border .15s,
-        box-shadow .15s;
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.15s;
 }
 
 
-textarea:focus {
+/* CÍRCULO ROJO */
 
-    border-color:
-        #c5111a;
+.icono{
+    width:44px;
+    height:44px;
+
+    min-width:44px;
+
+    border-radius:50%;
+
+    background:#d10e17;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:21px;
+
+    font-weight:bold;
+}
+
+
+/* CUANDO SE SELECCIONA */
+
+.opcion.activa{
+    border-color:#d10e17;
+
+    background:#fff1f1;
+
+    color:#b10810;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(209,14,23,.08);
+}
+
+.opcion.activa .icono{
+    background:#b70810;
+}
+
+
+/* =========================
+   COMENTARIO
+========================= */
+
+textarea{
+    width:100%;
+
+    min-height:120px;
+
+    padding:15px;
+
+    border:
+        1.5px solid #ccc;
+
+    border-radius:15px;
+
+    background:white;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    font-size:15px;
+
+    line-height:1.4;
+
+    outline:none;
+
+    resize:vertical;
+}
+
+textarea:focus{
+    border-color:#c9161d;
 
     box-shadow:
         0 0 0 3px
-        rgba(197,17,26,.08);
+        rgba(201,22,29,.08);
+}
+
+textarea::placeholder{
+    color:#999;
 }
 
 
-textarea::placeholder {
-
-    color: #999;
-}
-
-
-/* =========================================
+/* =========================
    BOTÓN ENVIAR
-========================================= */
+========================= */
 
-.enviar {
+.enviar{
+    width:100%;
 
-    width: 100%;
+    min-height:59px;
 
-    min-height: 57px;
+    margin-top:18px;
 
-    margin-top: 24px;
+    border:0;
 
-    padding:
-        14px;
-
-    border: none;
-
-    border-radius: 14px;
+    border-radius:15px;
 
     background:
         linear-gradient(
             180deg,
-            #e5101a,
-            #b90811
+            #e20d17,
+            #c10811
         );
 
-    color: white;
+    color:white;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-size:18px;
 
-    font-size: 18px;
+    font-weight:900;
 
-    font-weight: 900;
-
-    cursor: pointer;
+    cursor:pointer;
 
     box-shadow:
-        0 7px 15px
-        rgba(190,0,10,.28);
-
-    transition:
-        transform .15s,
-        box-shadow .15s;
-}
-
-
-.enviar:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 10px 20px
-        rgba(190,0,10,.35);
-}
-
-
-.enviar:active {
-
-    transform:
-        translateY(1px);
-}
-
-
-/* =========================================
-   PANTALLA DE GRACIAS
-========================================= */
-
-.gracias {
-
-    display: none;
-
-    padding:
-        40px 10px;
-}
-
-
-.check {
-
-    width: 75px;
-
-    height: 75px;
-
-    margin: 0 auto;
-
-    border-radius: 50%;
-
-    background:
-        #c81018;
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 42px;
-
-    font-weight: 900;
-
-    box-shadow:
-        0 7px 18px
+        0 6px 14px
         rgba(190,0,10,.25);
 }
 
-
-.gracias h2 {
-
-    margin:
-        20px 0 8px;
-
-    color:
-        #b90d15;
-
-    font-size:
-        28px;
+.enviar:active{
+    transform:scale(.99);
 }
 
 
-.gracias p {
+/* =========================
+   GRACIAS
+========================= */
 
-    color: #555;
+.gracias{
+    display:none;
 
-    font-size: 16px;
+    padding:40px 10px;
+}
 
-    line-height: 1.5;
+.check{
+    width:75px;
+    height:75px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#cc1018;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    font-weight:bold;
+}
+
+.gracias h2{
+    color:#bd1018;
+
+    font-size:27px;
+
+    margin:18px 0 8px;
+}
+
+.gracias p{
+    color:#555;
+
+    line-height:1.5;
 }
 
 
-/* =========================================
+/* =========================
    CELULAR
-========================================= */
+========================= */
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    body {
-
+    body{
         padding:
-            max(12px, env(safe-area-inset-top))
-            9px
-            max(30px, env(safe-area-inset-bottom));
+            max(10px,env(safe-area-inset-top))
+            8px
+            max(25px,env(safe-area-inset-bottom));
     }
 
-
-    body::before {
-
-        inset: -40px;
-
-        background-size: cover;
-
-        background-position: center;
-
-        filter: blur(7px);
-
-        transform:
-            scale(1.10);
+    .contenedor{
+        max-width:430px;
     }
 
+    .logo{
+        width:90%;
+        max-width:340px;
 
-    .contenedor {
-
-        max-width:
-            430px;
+        margin-bottom:12px;
     }
 
+    .tarjeta{
+        padding:23px 14px 20px;
 
-    .logo {
-
-        width: 88%;
-
-        max-width:
-            340px;
+        border-radius:22px;
     }
 
-
-    .logo-contenedor {
-
-        padding:
-            4px 0 12px;
-    }
-
-
-    .encuesta {
-
-        padding:
-            24px 15px 21px;
-
-        border-radius:
-            22px;
-    }
-
-
-    .titulo {
-
+    h1{
         font-size:
             clamp(
-                21px,
+                22px,
                 7vw,
                 28px
             );
     }
 
+    .subtitulo{
+        font-size:11px;
 
-    .subtitulo {
-
-        font-size:
-            11px;
-
-        letter-spacing:
-            4px;
+        letter-spacing:4px;
     }
 
-
-    .linea {
-
-        margin:
-            17px auto 20px;
+    .linea{
+        margin:17px auto 19px;
     }
 
-
-    .pregunta {
-
-        margin-top:
-            20px;
-
+    .pregunta{
         font-size:
             clamp(
-                16px,
-                4.8vw,
-                19px
+                17px,
+                5vw,
+                20px
             );
+
+        margin-top:18px;
     }
 
-
-    .estrellas {
-
-        gap: 3px;
+    .estrellas{
+        gap:2px;
     }
 
-
-    .estrella {
-
+    .estrella{
         font-size:
             clamp(
-                36px,
+                37px,
                 11vw,
                 46px
             );
     }
 
-
-    textarea {
-
-        min-height:
-            90px;
-
-        padding:
-            12px;
-
-        font-size:
-            14px;
+    .opciones{
+        gap:8px;
     }
 
+    .opcion{
+        min-height:61px;
 
-    .enviar {
+        padding:7px 8px;
 
-        min-height:
-            54px;
+        gap:8px;
 
-        margin-top:
-            20px;
-
-        font-size:
-            16px;
+        font-size:13px;
     }
 
+    .icono{
+        width:38px;
+        height:38px;
+
+        min-width:38px;
+
+        font-size:18px;
+    }
+
+    textarea{
+        min-height:105px;
+    }
+
+    .enviar{
+        min-height:55px;
+
+        font-size:16px;
+    }
 }
 
 
-/* TELÉFONOS MUY PEQUEÑOS */
+/* PANTALLAS MUY ANGOSTAS */
 
-@media (max-width: 350px) {
+@media(max-width:350px){
 
-    .encuesta {
-
-        padding-left:
-            12px;
-
-        padding-right:
-            12px;
+    .opcion{
+        font-size:12px;
     }
 
+    .icono{
+        width:34px;
+        height:34px;
 
-    .estrella {
-
-        font-size:
-            33px;
+        min-width:34px;
     }
 
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <div class="contenedor">
 
 
-    <!-- =================================
-         LOGO
-    ================================== -->
+<!-- =========================
+     LOGO
+========================= -->
 
-    <div class="logo-contenedor">
+<img
+    class="logo"
+    src="Imagen de ChatGPT 29 sept 2026, 10_27_08 p.m..png"
+    alt="Karnes en su Jugo"
+>
 
-        <img
-            src="Imagen de ChatGPT 29 sept 2026, 10_27_08 p.m..png"
-            class="logo"
-            alt="Karnes en su Jugo">
 
-    </div>
+<!-- =========================
+     TARJETA
+========================= -->
 
+<main class="tarjeta">
 
 
-    <!-- =================================
-         ENCUESTA
-    ================================== -->
+<section id="formulario">
 
-    <main class="encuesta">
 
+<h1>
+TU OPINIÓN NOS AYUDA
+</h1>
 
-        <section id="formulario">
 
+<div class="subtitulo">
+A SEGUIR MEJORANDO
+</div>
 
-            <h1 class="titulo">
 
-                TU OPINIÓN NOS AYUDA
+<div class="linea"></div>
 
-            </h1>
 
 
-            <div class="subtitulo">
+<!-- =========================
+     ESTRELLAS
+========================= -->
 
-                A SEGUIR MEJORANDO
+<div class="pregunta">
+¿Cómo fue tu experiencia?
+</div>
 
-            </div>
 
+<div class="estrellas">
 
-            <div class="linea"></div>
+<button
+    class="estrella"
+    type="button"
+    data-valor="1">
+★
+</button>
 
+<button
+    class="estrella"
+    type="button"
+    data-valor="2">
+★
+</button>
 
+<button
+    class="estrella"
+    type="button"
+    data-valor="3">
+★
+</button>
 
-            <!-- =============================
-                 PREGUNTA 1
-            ============================== -->
+<button
+    class="estrella"
+    type="button"
+    data-valor="4">
+★
+</button>
 
-            <div class="pregunta">
+<button
+    class="estrella"
+    type="button"
+    data-valor="5">
+★
+</button>
 
-                1. ¿Cómo fue tu experiencia?
+</div>
 
-            </div>
 
 
-            <div class="estrellas">
+<!-- =========================
+     4 OPCIONES
+========================= -->
 
+<div class="pregunta">
+¿Qué quieres destacar?
+</div>
 
-                <button
-                    type="button"
-                    class="estrella"
-                    data-valor="1"
-                    aria-label="1 estrella">
 
-                    ★
+<div class="opciones">
 
-                </button>
 
+<!-- SABOR -->
 
-                <button
-                    type="button"
-                    class="estrella"
-                    data-valor="2"
-                    aria-label="2 estrellas">
+<button
+    class="opcion"
+    type="button"
+    data-nombre="Sabor">
 
-                    ★
+<span class="icono">
+🥩
+</span>
 
-                </button>
+<span>
+Sabor
+</span>
 
+</button>
 
-                <button
-                    type="button"
-                    class="estrella"
-                    data-valor="3"
-                    aria-label="3 estrellas">
 
-                    ★
 
-                </button>
+<!-- SERVICIO -->
 
+<button
+    class="opcion"
+    type="button"
+    data-nombre="Servicio">
 
-                <button
-                    type="button"
-                    class="estrella"
-                    data-valor="4"
-                    aria-label="4 estrellas">
+<span class="icono">
+●
+</span>
 
-                    ★
+<span>
+Servicio
+</span>
 
-                </button>
+</button>
 
 
-                <button
-                    type="button"
-                    class="estrella"
-                    data-valor="5"
-                    aria-label="5 estrellas">
 
-                    ★
+<!-- TIEMPO -->
 
-                </button>
+<button
+    class="opcion"
+    type="button"
+    data-nombre="Tiempo de espera">
 
+<span class="icono">
+◷
+</span>
 
-            </div>
+<span>
+Tiempo<br>
+de espera
+</span>
 
+</button>
 
-            <div
-                class="texto-calificacion"
-                id="textoCalificacion">
 
-                Selecciona una calificación
 
-            </div>
+<!-- LIMPIEZA -->
 
+<button
+    class="opcion"
+    type="button"
+    data-nombre="Limpieza">
 
+<span class="icono">
+✦
+</span>
 
-            <!-- =============================
-                 PREGUNTA 2
-            ============================== -->
+<span>
+Limpieza
+</span>
 
-            <div class="pregunta">
-
-                2. ¿Qué te gustó más de nuestra comida?
-
-            </div>
-
-
-            <textarea
-                id="respuesta2"
-                placeholder="Escribe aquí tu respuesta..."></textarea>
-
-
-
-            <!-- =============================
-                 PREGUNTA 3
-            ============================== -->
-
-            <div class="pregunta">
-
-                3. ¿Qué podemos mejorar?
-
-            </div>
-
-
-            <textarea
-                id="respuesta3"
-                placeholder="Escribe aquí tu respuesta..."></textarea>
-
-
-
-            <!-- =============================
-                 PREGUNTA 4
-            ============================== -->
-
-            <div class="pregunta">
-
-                4. ¿Algún comentario adicional?
-
-            </div>
-
-
-            <textarea
-                id="respuesta4"
-                placeholder="Escribe aquí tu respuesta..."></textarea>
-
-
-
-            <!-- =============================
-                 BOTÓN
-            ============================== -->
-
-            <button
-                type="button"
-                class="enviar"
-                id="enviar">
-
-                ENVIAR RESEÑA　➤
-
-            </button>
-
-
-        </section>
-
-
-
-        <!-- =================================
-             AGRADECIMIENTO
-        ================================== -->
-
-        <section
-            class="gracias"
-            id="gracias">
-
-
-            <div class="check">
-
-                ✓
-
-            </div>
-
-
-            <h2>
-
-                ¡Gracias por tu opinión!
-
-            </h2>
-
-
-            <p>
-
-                Tu comentario nos ayuda
-                a seguir mejorando.
-
-            </p>
-
-
-            <button
-                type="button"
-                class="enviar"
-                onclick="location.reload()">
-
-                NUEVA RESEÑA
-
-            </button>
-
-
-        </section>
-
-
-    </main>
+</button>
 
 
 </div>
 
 
 
+<!-- =========================
+     COMENTARIO
+========================= -->
+
+<div class="pregunta">
+Cuéntanos un poco más
+</div>
+
+
+<textarea
+    id="comentario"
+    placeholder="Escribe aquí tu comentario..."></textarea>
+
+
+
+<!-- =========================
+     ENVIAR
+========================= -->
+
+<button
+    class="enviar"
+    id="enviar"
+    type="button">
+
+ENVIAR RESEÑA　➤
+
+</button>
+
+
+</section>
+
+
+
+<!-- =========================
+     GRACIAS
+========================= -->
+
+<section
+    class="gracias"
+    id="gracias">
+
+
+<div class="check">
+✓
+</div>
+
+
+<h2>
+¡Gracias por tu opinión!
+</h2>
+
+
+<p>
+Tu comentario nos ayuda
+a seguir mejorando.
+</p>
+
+
+<button
+    class="enviar"
+    type="button"
+    onclick="location.reload()">
+
+NUEVA RESEÑA
+
+</button>
+
+
+</section>
+
+
+</main>
+
+</div>
+
+
 <script>
 
-/* =========================================
-   CALIFICACIÓN DE ESTRELLAS
-========================================= */
+/* =========================
+   ESTRELLAS
+========================= */
 
 let calificacion = 0;
-
 
 const estrellas =
     document.querySelectorAll(
@@ -959,34 +836,15 @@ const estrellas =
     );
 
 
-const nombres = [
-
-    "",
-
-    "Muy mala",
-
-    "Mala",
-
-    "Regular",
-
-    "Muy buena",
-
-    "Excelente"
-
-];
-
-
 estrellas.forEach(
 
-    function(estrella) {
-
+    estrella => {
 
         estrella.addEventListener(
 
             "click",
 
-            function() {
-
+            function(){
 
                 calificacion =
                     Number(
@@ -996,67 +854,78 @@ estrellas.forEach(
 
                 estrellas.forEach(
 
-                    function(item) {
+                    item => {
 
-
-                        const valor =
+                        if(
                             Number(
                                 item.dataset.valor
-                            );
-
-
-                        if (
-                            valor <= calificacion
-                        ) {
-
+                            )
+                            <=
+                            calificacion
+                        ){
 
                             item.classList.add(
                                 "activa"
                             );
 
-
-                        }
-
-                        else {
-
+                        }else{
 
                             item.classList.remove(
                                 "activa"
                             );
 
-
                         }
-
 
                     }
 
                 );
 
-
-                document.getElementById(
-                    "textoCalificacion"
-                ).textContent =
-
-                    calificacion +
-                    " / 5 · " +
-                    nombres[calificacion];
-
-
             }
 
         );
-
 
     }
 
 );
 
 
+/* =========================
+   OPCIONES
+========================= */
 
-/* =========================================
+const opciones =
+    document.querySelectorAll(
+        ".opcion"
+    );
+
+
+opciones.forEach(
+
+    opcion => {
+
+        opcion.addEventListener(
+
+            "click",
+
+            function(){
+
+                this.classList.toggle(
+                    "activa"
+                );
+
+            }
+
+        );
+
+    }
+
+);
+
+
+/* =========================
    BOTÓN ENVIAR
-   PROTOTIPO - NO ENVÍA INFORMACIÓN
-========================================= */
+   SOLO PROTOTIPO
+========================= */
 
 document.getElementById(
     "enviar"
@@ -1064,82 +933,60 @@ document.getElementById(
 
     "click",
 
-    function() {
+    function(){
 
-
-        /* Debe seleccionar estrellas */
-
-        if (
+        if(
             calificacion === 0
-        ) {
-
+        ){
 
             alert(
-                "Selecciona una calificación de 1 a 5 estrellas."
+                "Selecciona una calificación."
             );
-
 
             return;
 
         }
 
 
+        const seleccionados = [];
 
-        /* Obtener respuestas */
 
-        const respuesta2 =
+        document.querySelectorAll(
+            ".opcion.activa"
+        ).forEach(
+
+            opcion => {
+
+                seleccionados.push(
+                    opcion.dataset.nombre
+                );
+
+            }
+
+        );
+
+
+        const comentario =
             document.getElementById(
-                "respuesta2"
-            ).value.trim();
+                "comentario"
+            ).value;
 
 
-        const respuesta3 =
-            document.getElementById(
-                "respuesta3"
-            ).value.trim();
+        /* SOLO PARA PROBAR */
 
-
-        const respuesta4 =
-            document.getElementById(
-                "respuesta4"
-            ).value.trim();
-
-
-
-        /* DATOS DEL PROTOTIPO */
-
-        const datos = {
-
+        console.log({
 
             calificacion:
                 calificacion,
 
-
-            gustoMas:
-                respuesta2,
-
-
-            mejorar:
-                respuesta3,
-
+            destacar:
+                seleccionados,
 
             comentario:
-                respuesta4
+                comentario
 
+        });
 
-        };
-
-
-        /* Solo se muestran en consola */
-
-        console.log(
-            "PROTOTIPO:",
-            datos
-        );
-
-
-
-        /* Ocultar formulario */
 
         document.getElementById(
             "formulario"
@@ -1147,34 +994,25 @@ document.getElementById(
             "none";
 
 
-
-        /* Mostrar agradecimiento */
-
         document.getElementById(
             "gracias"
         ).style.display =
             "block";
 
 
-
-        /* Subir al inicio */
-
         window.scrollTo({
 
-            top: 0,
+            top:0,
 
-            behavior: "smooth"
+            behavior:"smooth"
 
         });
-
 
     }
 
 );
 
-
 </script>
-
 
 </body>
 </html>
