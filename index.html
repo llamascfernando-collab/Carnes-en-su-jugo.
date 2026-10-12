@@ -3,1106 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
 <title>Karnes en su Jugo | Encuesta</title>
-
 <style>
-
-/* =========================
-   GENERAL
-========================= */
-
-*{
-    box-sizing:border-box;
+/* ========================= GENERAL ========================= */
+*{box-sizing:border-box;}
+html,body{margin:0; width:100%; min-height:100%;}
+body{min-height:100vh; min-height:100dvh; font-family:Arial,Helvetica,sans-serif; position:relative; overflow-x:hidden; padding:18px 10px 35px; background:#32170d;}
+/* ========================= FONDO ========================= */
+body::before{content:""; position:fixed; inset:0; background-image:url("carne en su jugo.jpeg"); background-size:cover; background-position:center; background-repeat:no-repeat; filter:none; transform:none; z-index:-2;}
+body::after{content:""; position:fixed; inset:0; background:rgba(30,10,3,.18); z-index:-1;}
+/* ========================= CONTENEDOR ========================= */
+.contenedor{width:100%; max-width:500px; margin:0 auto;}
+/* ========================= LOGO ========================= */
+.logo{display:block; width:90%; max-width:390px; height:auto; margin:0 auto 16px; object-fit:contain; filter: drop-shadow( 0 4px 8px rgba(0,0,0,.35) );}
+/* ========================= TARJETA ========================= */
+.tarjeta{width:100%; background:#ffffff; border-radius:27px; border-top: 6px solid #c9161d; padding: 27px 22px 25px; box-shadow: 0 18px 50px rgba(0,0,0,.40); text-align:center;}
+/* ========================= TÍTULO ========================= */
+h1{margin:0; color:#c4161d; font-size:28px; font-weight:900; line-height:1.05;}
+.subtitulo{margin-top:8px; color:#c4161d; font-size:14px; letter-spacing:5px;}
+.linea{width:88%; height:2px; background:#c4161d; margin: 20px auto 24px;}
+/* ========================= TEXTOS ========================= */
+.pregunta{margin: 20px 0 10px; color:#111; font-size:20px; font-weight:900;}
+/* ========================= ESTRELLAS ========================= */
+.estrellas{display:flex; justify-content:center; gap:7px; margin: 8px 0 22px;}
+.estrella{border:0; background:transparent; padding:0; font-size:47px; line-height:1; color:#d9d9d9; cursor:pointer; transition: transform .15s, color .15s;}
+.estrella.activa{color:#ffb82e; transform: scale(1.06); text-shadow: 0 2px 2px rgba(150,90,0,.25);}
+/* ========================= 4 OPCIONES ========================= */
+.opciones{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:12px;}
+.opcion{width:100%; min-height:67px; padding: 9px 12px; border: 1.5px solid #d7d7d7; border-radius:13px; background:#fff; display:flex; align-items:center; gap:12px; color:#111; font-size:15px; font-weight:500; text-align:left; cursor:pointer; transition: .15s;}
+.icono{width:44px; height:44px; min-width:44px; border-radius:50%; background:#d10e17; color:white; display:flex; justify-content:center; align-items:center; font-size:21px; font-weight:bold;}
+.opcion.activa{border-color:#d10e17; background:#fff1f1; color:#b10810; box-shadow: 0 0 0 2px rgba(209,14,23,.08);}
+.opcion.activa .icono{background:#b70810; transform: scale(1.05);}
+/* ========================= COMENTARIO ========================= */
+textarea{width:100%; min-height:120px; padding:15px; border: 1.5px solid #ccc; border-radius:15px; background:white; font-family: Arial, Helvetica, sans-serif; font-size:15px; line-height:1.4; outline:none; resize:vertical;}
+textarea:focus{border-color:#c9161d; box-shadow: 0 0 0 3px rgba(201,22,29,.08);}
+textarea::placeholder{color:#999;}
+/* ========================= BOTÓN ENVIAR ========================= */
+.enviar{width:100%; min-height:59px; margin-top:18px; border:0; border-radius:15px; background: linear-gradient( 180deg, #e20d17, #c10811 ); color:white; font-size:18px; font-weight:900; cursor:pointer; box-shadow: 0 6px 14px rgba(190,0,10,.25);}
+.enviar:active{transform: scale(.99);}
+/* ========================= PANTALLA GRACIAS ========================= */
+.gracias{display:none; padding: 40px 10px;}
+.check{width:75px; height:75px; margin:auto; border-radius:50%; background:#cc1018; color:white; display:flex; justify-content:center; align-items:center; font-size:42px; font-weight:bold;}
+.gracias h2{color:#bd1018; font-size:27px; margin: 18px 0 8px;}
+.gracias p{color:#555; line-height:1.5;}
+/* ========================= CELULAR ========================= */
+@media(max-width:600px){body{padding: max( 10px, env(safe-area-inset-top) ) 8px max( 25px, env(safe-area-inset-bottom) );}
+.contenedor{max-width:430px;}
+.logo{width:90%; max-width:340px; margin-bottom:12px;}
+.tarjeta{padding: 23px 14px 20px; border-radius:22px;}
+h1{font-size: clamp( 22px, 7vw, 28px );}
+.subtitulo{font-size:11px; letter-spacing:4px;}
+.linea{margin: 17px auto 19px;}
+.pregunta{font-size: clamp( 17px, 5vw, 20px ); margin-top:18px;}
+.estrellas{gap:2px;}
+.estrella{font-size: clamp( 37px, 11vw, 46px );}
+.opciones{gap:8px;}
+.opcion{min-height:61px; padding: 7px 8px; gap:8px; font-size:13px;}
+.icono{width:38px; height:38px; min-width:38px; font-size:18px;}
+textarea{min-height:105px;}
+.enviar{min-height:55px; font-size:16px;}
 }
-
-html,body{
-    margin:0;
-    width:100%;
-    min-height:100%;
+@media(max-width:350px){.opcion{font-size:12px;}
+.icono{width:34px; height:34px; min-width:34px;}
 }
-
-body{
-    min-height:100vh;
-    min-height:100dvh;
-
-    font-family:Arial,Helvetica,sans-serif;
-
-    position:relative;
-    overflow-x:hidden;
-
-    padding:18px 10px 35px;
-
-    background:#32170d;
-}
-
-
-/* =========================
-   FONDO SIN DESENFOQUE
-========================= */
-
-body::before{
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    background-image:url("carne en su jugo.jpeg");
-
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-
-    /* SIN BLUR */
-    filter:none;
-    transform:none;
-
-    z-index:-2;
-}
-
-
-/* OSCURECIDO LIGERO PARA
-   QUE SE VEA MEJOR LA TARJETA */
-
-body::after{
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    background:rgba(30,10,3,.18);
-
-    z-index:-1;
-}
-
-
-/* =========================
-   CONTENEDOR
-========================= */
-
-.contenedor{
-    width:100%;
-    max-width:500px;
-
-    margin:0 auto;
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
-.logo{
-    display:block;
-
-    width:90%;
-    max-width:390px;
-
-    height:auto;
-
-    margin:0 auto 16px;
-
-    object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 4px 8px
-            rgba(0,0,0,.35)
-        );
-}
-
-
-/* =========================
-   TARJETA
-========================= */
-
-.tarjeta{
-    width:100%;
-
-    background:#ffffff;
-
-    border-radius:27px;
-
-    border-top:
-        6px solid #c9161d;
-
-    padding:
-        27px 22px 25px;
-
-    box-shadow:
-        0 18px 50px
-        rgba(0,0,0,.40);
-
-    text-align:center;
-}
-
-
-/* =========================
-   TÍTULO
-========================= */
-
-h1{
-    margin:0;
-
-    color:#c4161d;
-
-    font-size:28px;
-
-    font-weight:900;
-
-    line-height:1.05;
-}
-
-.subtitulo{
-    margin-top:8px;
-
-    color:#c4161d;
-
-    font-size:14px;
-
-    letter-spacing:5px;
-}
-
-.linea{
-    width:88%;
-
-    height:2px;
-
-    background:#c4161d;
-
-    margin:
-        20px auto 24px;
-}
-
-
-/* =========================
-   TEXTOS
-========================= */
-
-.pregunta{
-    margin:
-        20px 0 10px;
-
-    color:#111;
-
-    font-size:20px;
-
-    font-weight:900;
-}
-
-
-/* =========================
-   ESTRELLAS
-========================= */
-
-.estrellas{
-    display:flex;
-
-    justify-content:center;
-
-    gap:7px;
-
-    margin:
-        8px 0 22px;
-}
-
-.estrella{
-    border:0;
-
-    background:transparent;
-
-    padding:0;
-
-    font-size:47px;
-
-    line-height:1;
-
-    color:#d9d9d9;
-
-    cursor:pointer;
-
-    transition:
-        transform .15s,
-        color .15s;
-}
-
-.estrella.activa{
-    color:#ffb82e;
-
-    transform:
-        scale(1.06);
-
-    text-shadow:
-        0 2px 2px
-        rgba(150,90,0,.25);
-}
-
-
-/* =========================
-   4 OPCIONES
-========================= */
-
-.opciones{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:10px;
-
-    margin-top:12px;
-}
-
-.opcion{
-    width:100%;
-
-    min-height:67px;
-
-    padding:
-        9px 12px;
-
-    border:
-        1.5px solid #d7d7d7;
-
-    border-radius:13px;
-
-    background:#fff;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    color:#111;
-
-    font-size:15px;
-
-    font-weight:500;
-
-    text-align:left;
-
-    cursor:pointer;
-
-    transition:
-        .15s;
-}
-
-
-/* CÍRCULO ROJO */
-
-.icono{
-    width:44px;
-    height:44px;
-
-    min-width:44px;
-
-    border-radius:50%;
-
-    background:#d10e17;
-
-    color:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:21px;
-
-    font-weight:bold;
-}
-
-
-/* OPCIÓN SELECCIONADA */
-
-.opcion.activa{
-    border-color:#d10e17;
-
-    background:#fff1f1;
-
-    color:#b10810;
-
-    box-shadow:
-        0 0 0 2px
-        rgba(209,14,23,.08);
-}
-
-.opcion.activa .icono{
-    background:#b70810;
-
-    transform:
-        scale(1.05);
-}
-
-
-/* =========================
-   COMENTARIO ABIERTO
-========================= */
-
-textarea{
-    width:100%;
-
-    min-height:120px;
-
-    padding:15px;
-
-    border:
-        1.5px solid #ccc;
-
-    border-radius:15px;
-
-    background:white;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size:15px;
-
-    line-height:1.4;
-
-    outline:none;
-
-    resize:vertical;
-}
-
-textarea:focus{
-    border-color:#c9161d;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(201,22,29,.08);
-}
-
-textarea::placeholder{
-    color:#999;
-}
-
-
-/* =========================
-   BOTÓN ENVIAR
-========================= */
-
-.enviar{
-    width:100%;
-
-    min-height:59px;
-
-    margin-top:18px;
-
-    border:0;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #e20d17,
-            #c10811
-        );
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 6px 14px
-        rgba(190,0,10,.25);
-}
-
-.enviar:active{
-    transform:
-        scale(.99);
-}
-
-
-/* =========================
-   PANTALLA GRACIAS
-========================= */
-
-.gracias{
-    display:none;
-
-    padding:
-        40px 10px;
-}
-
-.check{
-    width:75px;
-
-    height:75px;
-
-    margin:auto;
-
-    border-radius:50%;
-
-    background:#cc1018;
-
-    color:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:42px;
-
-    font-weight:bold;
-}
-
-.gracias h2{
-    color:#bd1018;
-
-    font-size:27px;
-
-    margin:
-        18px 0 8px;
-}
-
-.gracias p{
-    color:#555;
-
-    line-height:1.5;
-}
-
-
-/* =========================
-   CELULAR
-========================= */
-
-@media(max-width:600px){
-
-    body{
-        padding:
-            max(
-                10px,
-                env(safe-area-inset-top)
-            )
-            8px
-            max(
-                25px,
-                env(safe-area-inset-bottom)
-            );
-    }
-
-
-    .contenedor{
-        max-width:430px;
-    }
-
-
-    .logo{
-        width:90%;
-
-        max-width:340px;
-
-        margin-bottom:12px;
-    }
-
-
-    .tarjeta{
-        padding:
-            23px 14px 20px;
-
-        border-radius:22px;
-    }
-
-
-    h1{
-        font-size:
-            clamp(
-                22px,
-                7vw,
-                28px
-            );
-    }
-
-
-    .subtitulo{
-        font-size:11px;
-
-        letter-spacing:4px;
-    }
-
-
-    .linea{
-        margin:
-            17px auto 19px;
-    }
-
-
-    .pregunta{
-        font-size:
-            clamp(
-                17px,
-                5vw,
-                20px
-            );
-
-        margin-top:18px;
-    }
-
-
-    .estrellas{
-        gap:2px;
-    }
-
-
-    .estrella{
-        font-size:
-            clamp(
-                37px,
-                11vw,
-                46px
-            );
-    }
-
-
-    .opciones{
-        gap:8px;
-    }
-
-
-    .opcion{
-        min-height:61px;
-
-        padding:
-            7px 8px;
-
-        gap:8px;
-
-        font-size:13px;
-    }
-
-
-    .icono{
-        width:38px;
-
-        height:38px;
-
-        min-width:38px;
-
-        font-size:18px;
-    }
-
-
-    textarea{
-        min-height:105px;
-    }
-
-
-    .enviar{
-        min-height:55px;
-
-        font-size:16px;
-    }
-
-}
-
-
-/* PANTALLAS PEQUEÑAS */
-
-@media(max-width:350px){
-
-    .opcion{
-        font-size:12px;
-    }
-
-
-    .icono{
-        width:34px;
-
-        height:34px;
-
-        min-width:34px;
-    }
-
-}
-
+/* ========================= PROMOCIONES (OPCIONAL) ========================= */
+.promo-pregunta{margin:22px 0 14px; color:#111; font-size:18px; font-weight:900; line-height:1.3;}
+.promo-botones{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.btn-secundario{width:100%; min-height:55px; border:1.5px solid #c9161d; border-radius:15px; background:#fff; color:#c10811; font-size:16px; font-weight:900; cursor:pointer;}
+.promo-form{display:none; text-align:left;}
+.promo-form input[type="email"]{width:100%; min-height:52px; padding:0 15px; border:1.5px solid #ccc; border-radius:15px; font-size:16px; outline:none;}
+.promo-form input[type="email"]:focus{border-color:#c9161d; box-shadow:0 0 0 3px rgba(201,22,29,.08);}
+.consentimiento{display:flex; gap:10px; align-items:flex-start; margin-top:12px; color:#555; font-size:13px; line-height:1.4;}
+.consentimiento input{margin-top:2px; accent-color:#c9161d; min-width:18px; height:18px;}
+.nota-privacidad{margin-top:10px; color:#888; font-size:12px; line-height:1.4; text-align:center;}
+.final{display:none;}
 </style>
 </head>
-
-
 <body>
-
-
 <div class="contenedor">
 
-
-<!-- =========================
-     LOGO
-========================= -->
-
-<img
-    class="logo"
-    src="Imagen de ChatGPT 29 sept 2026, 10_27_08 p.m..png"
-    alt="Karnes en su Jugo"
->
-
-
-<!-- =========================
-     TARJETA
-========================= -->
+<img class="logo" src="Imagen de ChatGPT 29 sept 2026, 10_27_08 p.m..png" alt="Karnes en su Jugo">
 
 <main class="tarjeta">
 
-
 <section id="formulario">
 
-
-<h1>
-    TU OPINIÓN NOS AYUDA
-</h1>
-
-
-<div class="subtitulo">
-    A SEGUIR MEJORANDO
-</div>
-
-
+<h1>TU OPINIÓN NOS AYUDA</h1>
+<div class="subtitulo">A SEGUIR MEJORANDO</div>
 <div class="linea"></div>
 
-
-
-<!-- =========================
-     ESTRELLAS
-========================= -->
-
-<div class="pregunta">
-    ¿Cómo fue tu experiencia?
-</div>
-
-
+<div class="pregunta">¿Cómo fue tu experiencia?</div>
 <div class="estrellas">
-
-    <button
-        class="estrella"
-        type="button"
-        data-valor="1">
-        ★
-    </button>
-
-    <button
-        class="estrella"
-        type="button"
-        data-valor="2">
-        ★
-    </button>
-
-    <button
-        class="estrella"
-        type="button"
-        data-valor="3">
-        ★
-    </button>
-
-    <button
-        class="estrella"
-        type="button"
-        data-valor="4">
-        ★
-    </button>
-
-    <button
-        class="estrella"
-        type="button"
-        data-valor="5">
-        ★
-    </button>
-
+    <button class="estrella" type="button" data-valor="1">★</button>
+    <button class="estrella" type="button" data-valor="2">★</button>
+    <button class="estrella" type="button" data-valor="3">★</button>
+    <button class="estrella" type="button" data-valor="4">★</button>
+    <button class="estrella" type="button" data-valor="5">★</button>
 </div>
 
-
-
-<!-- =========================
-     4 OPCIONES
-========================= -->
-
-<div class="pregunta">
-    ¿Qué quieres destacar?
-</div>
-
-
+<div class="pregunta">¿Qué quieres destacar?</div>
 <div class="opciones">
-
-
-<!-- SABOR -->
-
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Sabor">
-
-    <span class="icono">
-        🥩
-    </span>
-
-    <span>
-        Sabor
-    </span>
-
-</button>
-
-
-
-<!-- SERVICIO -->
-
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Servicio">
-
-    <span class="icono">
-        👤
-    </span>
-
-    <span>
-        Servicio
-    </span>
-
-</button>
-
-
-
-<!-- TIEMPO DE ESPERA -->
-
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Tiempo de espera">
-
-    <span class="icono">
-        ◷
-    </span>
-
-    <span>
-        Tiempo<br>
-        de espera
-    </span>
-
-</button>
-
-
-
-<!-- LIMPIEZA -->
-
-<button
-    class="opcion"
-    type="button"
-    data-nombre="Limpieza">
-
-    <span class="icono">
-        ✦
-    </span>
-
-    <span>
-        Limpieza
-    </span>
-
-</button>
-
-
+    <button class="opcion" type="button" data-nombre="Sabor"><span class="icono">🥩</span><span>Sabor</span></button>
+    <button class="opcion" type="button" data-nombre="Servicio"><span class="icono">👤</span><span>Servicio</span></button>
+    <button class="opcion" type="button" data-nombre="Tiempo de espera"><span class="icono">◷</span><span>Tiempo<br>de espera</span></button>
+    <button class="opcion" type="button" data-nombre="Limpieza"><span class="icono">✦</span><span>Limpieza</span></button>
 </div>
 
+<div class="pregunta">Cuéntanos un poco más</div>
+<textarea id="comentario" placeholder="Escribe aquí tu comentario, sugerencia o experiencia..."></textarea>
 
-
-<!-- =========================
-     RESPUESTA ABIERTA
-========================= -->
-
-<div class="pregunta">
-    Cuéntanos un poco más
-</div>
-
-
-<textarea
-    id="comentario"
-    placeholder="Escribe aquí tu comentario, sugerencia o experiencia..."></textarea>
-
-
-
-<!-- =========================
-     ENVIAR
-========================= -->
-
-<button
-    class="enviar"
-    id="enviar"
-    type="button">
-
-    ENVIAR RESEÑA　➤
-
-</button>
-
+<button class="enviar" id="enviar" type="button">ENVIAR RESEÑA　➤</button>
 
 </section>
 
+<section class="gracias" id="gracias">
 
+    <div class="check">✓</div>
+    <h2>¡Gracias por tu opinión!</h2>
+    <p>Tu comentario nos ayuda a seguir mejorando.</p>
 
-<!-- =========================
-     MENSAJE DE GRACIAS
-========================= -->
-
-<section
-    class="gracias"
-    id="gracias">
-
-
-    <div class="check">
-        ✓
+    <div id="promo-oferta">
+        <div class="linea"></div>
+        <div class="promo-pregunta">🎁 ¿Quieres recibir promociones y descuentos en tu correo?</div>
+        <div class="promo-botones">
+            <button class="enviar" id="promo-si" type="button" style="margin-top:0">SÍ, QUIERO</button>
+            <button class="btn-secundario" id="promo-no" type="button">NO, GRACIAS</button>
+        </div>
     </div>
 
+    <div class="promo-form" id="promo-form">
+        <div class="linea"></div>
+        <div class="promo-pregunta" style="text-align:center">Déjanos tu correo</div>
+        <input type="email" id="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+        <label class="consentimiento">
+            <input type="checkbox" id="acepto">
+            <span>Acepto recibir promociones de Karnes en su Jugo. Puedo darme de baja cuando quiera.</span>
+        </label>
+        <button class="enviar" id="promo-enviar" type="button">SUSCRIBIRME　➤</button>
+        <div class="nota-privacidad">Tu correo se guarda por separado de tu reseña: tu opinión sigue siendo anónima.</div>
+    </div>
 
-    <h2>
-        ¡Gracias por tu opinión!
-    </h2>
-
-
-    <p>
-        Tu comentario nos ayuda
-        a seguir mejorando.
-    </p>
-
-
-    <button
-        class="enviar"
-        type="button"
-        onclick="location.reload()">
-
-        NUEVA RESEÑA
-
-    </button>
-
+    <div class="final" id="final">
+        <div class="linea"></div>
+        <p id="final-texto">¡Listo! Te esperamos pronto.</p>
+        <button class="enviar" type="button" onclick="location.reload()">NUEVA RESEÑA</button>
+    </div>
 
 </section>
 
-
 </main>
-
-
 </div>
-
-
 
 <script>
 
-
-/* =========================
-   ESTRELLAS
-========================= */
-
+/* ========================= ESTRELLAS ========================= */
 let calificacion = 0;
-
-
-const estrellas =
-    document.querySelectorAll(
-        ".estrella"
-    );
-
-
-estrellas.forEach(
-
-    estrella => {
-
-        estrella.addEventListener(
-
-            "click",
-
-            function(){
-
-                calificacion =
-                    Number(
-                        this.dataset.valor
-                    );
-
-
-                estrellas.forEach(
-
-                    item => {
-
-                        if(
-                            Number(
-                                item.dataset.valor
-                            )
-                            <=
-                            calificacion
-                        ){
-
-                            item.classList.add(
-                                "activa"
-                            );
-
-                        }else{
-
-                            item.classList.remove(
-                                "activa"
-                            );
-
-                        }
-
-                    }
-
-                );
-
-            }
-
-        );
-
-    }
-
-);
-
-
-
-/* =========================
-   4 OPCIONES
-   SE PUEDEN MARCAR VARIAS
-========================= */
-
-const opciones =
-    document.querySelectorAll(
-        ".opcion"
-    );
-
-
-opciones.forEach(
-
-    opcion => {
-
-        opcion.addEventListener(
-
-            "click",
-
-            function(){
-
-                this.classList.toggle(
-                    "activa"
-                );
-
-            }
-
-        );
-
-    }
-
-);
-
-
-
-/* =========================
-   BOTÓN ENVIAR
-   PROTOTIPO
-========================= */
-
-document.getElementById(
-    "enviar"
-).addEventListener(
-
-    "click",
-
-    function(){
-
-
-        /* OBLIGA A ELEGIR ESTRELLAS */
-
-        if(
-            calificacion === 0
-        ){
-
-            alert(
-                "Selecciona una calificación."
-            );
-
-            return;
-
-        }
-
-
-        /* GUARDA OPCIONES */
-
-        const seleccionados = [];
-
-
-        document.querySelectorAll(
-            ".opcion.activa"
-        ).forEach(
-
-            opcion => {
-
-                seleccionados.push(
-                    opcion.dataset.nombre
-                );
-
-            }
-
-        );
-
-
-        /* GUARDA COMENTARIO */
-
-        const comentario =
-            document.getElementById(
-                "comentario"
-            ).value;
-
-
-        /* DATOS DEL PROTOTIPO */
-
-        console.log({
-
-            calificacion:
-                calificacion,
-
-            destacar:
-                seleccionados,
-
-            comentario:
-                comentario
-
+const estrellas = document.querySelectorAll(".estrella");
+
+estrellas.forEach(estrella => {
+    estrella.addEventListener("click", function(){
+        calificacion = Number(this.dataset.valor);
+        estrellas.forEach(item => {
+            item.classList.toggle("activa", Number(item.dataset.valor) <= calificacion);
         });
+    });
+});
 
+/* ========================= 4 OPCIONES (SE PUEDEN MARCAR VARIAS) ========================= */
+document.querySelectorAll(".opcion").forEach(opcion => {
+    opcion.addEventListener("click", function(){
+        this.classList.toggle("activa");
+    });
+});
 
-        /* OCULTAR ENCUESTA */
+/* ========================= CONFIGURACIÓN DE ENVÍOS ========================= */
+const URL_RESENAS     = "PEGA_AQUI_URL_FORMSPREE_RESENAS";
+const URL_PROMOCIONES = "PEGA_AQUI_URL_FORMSPREE_PROMOCIONES";
+const URL_GOOGLE      = "https://script.google.com/macros/s/AKfycbwDxgg6ZbQkB_h8iUIPgOYOcnbAaNCdeWR6tJvSaLBKM_zy8GGEb4XbZSKgTMa-R3IG/exec";
+const SUCURSAL        = "Karnes en su Jugo";
 
-        document.getElementById(
-            "formulario"
-        ).style.display =
-            "none";
+function enviarDatos(url, datos){
+    if(!url.startsWith("https://")){
+        console.log("Sin URL configurada:", datos);
+        return Promise.resolve({ ok:true });
+    }
+    return fetch(url, {
+        method:"POST",
+        headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+        body:JSON.stringify(datos)
+    });
+}
 
+function enviarGoogle(datos){
+    if(!URL_GOOGLE.startsWith("https://")) return;
+    fetch(URL_GOOGLE, {
+        method:"POST",
+        mode:"no-cors",
+        headers:{ "Content-Type":"text/plain;charset=utf-8" },
+        body:JSON.stringify(datos)
+    }).catch(err => console.error("Error Google Sheets:", err));
+}
 
-        /* MOSTRAR GRACIAS */
+function mostrar(id, visible){
+    document.getElementById(id).style.display = visible ? "block" : "none";
+}
 
-        document.getElementById(
-            "gracias"
-        ).style.display =
-            "block";
+/* ========================= BOTÓN ENVIAR RESEÑA ========================= */
+const botonEnviar = document.getElementById("enviar");
 
+botonEnviar.addEventListener("click", async function(){
 
-        /* SUBIR AL INICIO */
-
-        window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
-        });
-
+    if(calificacion === 0){
+        alert("Selecciona una calificación.");
+        return;
     }
 
-);
+    const seleccionados = [];
+    document.querySelectorAll(".opcion.activa").forEach(opcion => {
+        seleccionados.push(opcion.dataset.nombre);
+    });
 
+    const resena = {
+        sucursal: SUCURSAL,
+        calificacion: calificacion,
+        destacar: seleccionados.join(", ") || "Ninguno",
+        comentario: document.getElementById("comentario").value.trim() || "Sin comentarios"
+    };
+
+    botonEnviar.disabled = true;
+    botonEnviar.textContent = "ENVIANDO...";
+
+    try{
+        enviarGoogle(Object.assign({ tipo:"resena" }, resena));
+
+        const r = await enviarDatos(URL_RESENAS, resena);
+        if(!r.ok){ throw new Error("No se aceptó la reseña"); }
+
+        mostrar("formulario", false);
+        mostrar("gracias", true);
+        window.scrollTo({ top:0, behavior:"smooth" });
+
+    }catch(error){
+        console.error(error);
+        alert("No se pudo enviar tu reseña. Intenta nuevamente.");
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = "ENVIAR RESEÑA　➤";
+    }
+});
+
+/* ========================= PROMOCIONES: SÍ / NO ========================= */
+document.getElementById("promo-si").addEventListener("click", () => {
+    mostrar("promo-oferta", false);
+    mostrar("promo-form", true);
+    document.getElementById("correo").focus();
+});
+
+document.getElementById("promo-no").addEventListener("click", () => {
+    mostrar("promo-oferta", false);
+    document.getElementById("final-texto").textContent = "¡Gracias! Te esperamos pronto.";
+    mostrar("final", true);
+});
+
+/* ========================= PROMOCIONES: SUSCRIBIRSE (aparte, sin la reseña) ========================= */
+const botonPromo = document.getElementById("promo-enviar");
+
+botonPromo.addEventListener("click", async () => {
+
+    const correo = document.getElementById("correo").value.trim();
+    const acepto = document.getElementById("acepto").checked;
+
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)){
+        alert("Escribe un correo válido.");
+        return;
+    }
+    if(!acepto){
+        alert("Marca la casilla para aceptar recibir promociones.");
+        return;
+    }
+
+    botonPromo.disabled = true;
+    botonPromo.textContent = "ENVIANDO...";
+
+    const datosPromo = {
+        correo: correo,
+        acepta_promociones: "Sí",
+        origen: "Encuesta " + SUCURSAL
+    };
+
+    try{
+        enviarGoogle(Object.assign({ tipo:"promo" }, datosPromo));
+
+        const r = await enviarDatos(URL_PROMOCIONES, datosPromo);
+        if(!r.ok){ throw new Error("No se aceptó el correo"); }
+
+        mostrar("promo-form", false);
+        document.getElementById("final-texto").textContent = "¡Listo! Pronto recibirás nuestras promociones. 🥩";
+        mostrar("final", true);
+
+    }catch(error){
+        console.error(error);
+        alert("No se pudo guardar tu correo. Intenta nuevamente.");
+        botonPromo.disabled = false;
+        botonPromo.textContent = "SUSCRIBIRME　➤";
+    }
+});
 
 </script>
-
-
 </body>
 </html>
