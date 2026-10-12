@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>Karnes en su Jugo | Encuesta</title>
+
 <style>
 /* ========================= GENERAL ========================= */
 *{box-sizing:border-box;}
 html,body{margin:0; width:100%; min-height:100%;}
 body{min-height:100vh; min-height:100dvh; font-family:Arial,Helvetica,sans-serif; position:relative; overflow-x:hidden; padding:18px 10px 35px; background:#32170d;}
-/* ========================= FONDO ========================= */
-body::before{content:""; position:fixed; inset:0; background-image:url("carne en su jugo.jpeg"); background-size:cover; background-position:center; background-repeat:no-repeat; filter:none; transform:none; z-index:-2;}
+/* ========================= FONDO SIN DESENFOQUE ========================= */
+body::before{content:""; position:fixed; inset:0; background-image:url("carne en su jugo.jpeg"); background-size:cover; background-position:center; background-repeat:no-repeat; /* SIN BLUR */
+filter:none; transform:none; z-index:-2;}
+/* OSCURECIDO LIGERO PARA QUE SE VEA MEJOR LA TARJETA */
 body::after{content:""; position:fixed; inset:0; background:rgba(30,10,3,.18); z-index:-1;}
 /* ========================= CONTENEDOR ========================= */
 .contenedor{width:100%; max-width:500px; margin:0 auto;}
@@ -31,10 +35,12 @@ h1{margin:0; color:#c4161d; font-size:28px; font-weight:900; line-height:1.05;}
 /* ========================= 4 OPCIONES ========================= */
 .opciones{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:12px;}
 .opcion{width:100%; min-height:67px; padding: 9px 12px; border: 1.5px solid #d7d7d7; border-radius:13px; background:#fff; display:flex; align-items:center; gap:12px; color:#111; font-size:15px; font-weight:500; text-align:left; cursor:pointer; transition: .15s;}
+/* CÍRCULO ROJO */
 .icono{width:44px; height:44px; min-width:44px; border-radius:50%; background:#d10e17; color:white; display:flex; justify-content:center; align-items:center; font-size:21px; font-weight:bold;}
+/* OPCIÓN SELECCIONADA */
 .opcion.activa{border-color:#d10e17; background:#fff1f1; color:#b10810; box-shadow: 0 0 0 2px rgba(209,14,23,.08);}
 .opcion.activa .icono{background:#b70810; transform: scale(1.05);}
-/* ========================= COMENTARIO ========================= */
+/* ========================= COMENTARIO ABIERTO ========================= */
 textarea{width:100%; min-height:120px; padding:15px; border: 1.5px solid #ccc; border-radius:15px; background:white; font-family: Arial, Helvetica, sans-serif; font-size:15px; line-height:1.4; outline:none; resize:vertical;}
 textarea:focus{border-color:#c9161d; box-shadow: 0 0 0 3px rgba(201,22,29,.08);}
 textarea::placeholder{color:#999;}
@@ -63,6 +69,7 @@ h1{font-size: clamp( 22px, 7vw, 28px );}
 textarea{min-height:105px;}
 .enviar{min-height:55px; font-size:16px;}
 }
+/* PANTALLAS PEQUEÑAS */
 @media(max-width:350px){.opcion{font-size:12px;}
 .icono{width:34px; height:34px; min-width:34px;}
 }
@@ -79,6 +86,7 @@ textarea{min-height:105px;}
 .final{display:none;}
 </style>
 </head>
+
 <body>
 <div class="contenedor">
 
@@ -137,10 +145,10 @@ textarea{min-height:105px;}
         <input type="email" id="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email">
         <label class="consentimiento">
             <input type="checkbox" id="acepto">
-            <span>Acepto recibir promociones de Karnes en su Jugo. Puedo darme de baja cuando quiera.</span>
+            <span>Acepto recibir promociones de Karnes en su Jugo y que mi correo quede ligado a mi reseña. Puedo darme de baja cuando quiera.</span>
         </label>
         <button class="enviar" id="promo-enviar" type="button">SUSCRIBIRME　➤</button>
-        <div class="nota-privacidad">Tu correo se guarda por separado de tu reseña: tu opinión sigue siendo anónima.</div>
+        <div class="nota-privacidad">Tu correo quedará registrado junto con tu reseña para poder darte seguimiento y enviarte promociones.</div>
     </div>
 
     <div class="final" id="final">
@@ -181,6 +189,9 @@ const URL_RESENAS     = "PEGA_AQUI_URL_FORMSPREE_RESENAS";
 const URL_PROMOCIONES = "PEGA_AQUI_URL_FORMSPREE_PROMOCIONES";
 const URL_GOOGLE      = "https://script.google.com/macros/s/AKfycbwDxgg6ZbQkB_h8iUIPgOYOcnbAaNCdeWR6tJvSaLBKM_zy8GGEb4XbZSKgTMa-R3IG/exec";
 const SUCURSAL        = "Karnes en su Jugo";
+
+/* ID único de esta reseña (para ligar el correo con la reseña) */
+const ID_RESENA = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
 function enviarDatos(url, datos){
     if(!url.startsWith("https://")){
@@ -224,6 +235,7 @@ botonEnviar.addEventListener("click", async function(){
     });
 
     const resena = {
+        id: ID_RESENA,
         sucursal: SUCURSAL,
         calificacion: calificacion,
         destacar: seleccionados.join(", ") || "Ninguno",
@@ -264,7 +276,7 @@ document.getElementById("promo-no").addEventListener("click", () => {
     mostrar("final", true);
 });
 
-/* ========================= PROMOCIONES: SUSCRIBIRSE (aparte, sin la reseña) ========================= */
+/* ========================= PROMOCIONES: SUSCRIBIRSE ========================= */
 const botonPromo = document.getElementById("promo-enviar");
 
 botonPromo.addEventListener("click", async () => {
@@ -285,6 +297,7 @@ botonPromo.addEventListener("click", async () => {
     botonPromo.textContent = "ENVIANDO...";
 
     const datosPromo = {
+        id: ID_RESENA,
         correo: correo,
         acepta_promociones: "Sí",
         origen: "Encuesta " + SUCURSAL
@@ -310,4 +323,5 @@ botonPromo.addEventListener("click", async () => {
 
 </script>
 </body>
+
 </html>
